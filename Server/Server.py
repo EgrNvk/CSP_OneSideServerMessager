@@ -54,6 +54,8 @@ class Server:
 
         with self.clients_lock:
             if client_socket in self.clients:
+                addr = client_socket.getpeername()
+                print("Client disconnected:", addr)
                 self.clients.remove(client_socket)
 
         try:
